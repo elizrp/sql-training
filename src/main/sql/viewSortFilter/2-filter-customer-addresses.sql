@@ -9,9 +9,11 @@ from customers_addresses
 where city ~ '^B';
 
 --3. get 3 different random cities located in Bulgaria
-select distinct city
-from customers_addresses
-where country = 'Bulgaria'
+select * from
+	(select distinct city
+	from customers_addresses
+	where country = 'Bulgaria') z
+order by random()
 limit 3;
 
 --4. get a list of all addresses in Bulgaria outside of Sofia, Plovdiv, Varna
